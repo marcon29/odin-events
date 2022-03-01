@@ -4,7 +4,7 @@
     <h3><%= user.name %></h3>
 <% end %>
 
-<% if action_name == "show" %>
+<% if controller_name == "users" && action_name == "show" %>
     <p>Name: <%= user.name %></p>
     <p>Username: <%= user.username %></p>
     <p>Email: <%= user.email %></p>

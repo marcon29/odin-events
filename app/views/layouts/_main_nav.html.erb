@@ -1,0 +1,15 @@
+<h1><%= "#{controller_name.titleize}##{action_name}" %></h1>
+<p>
+    <%= link_to "All Events", events_path %>
+    &nbsp &nbsp | &nbsp &nbsp 
+    <%= link_to "All Locations", locations_path %>
+    &nbsp &nbsp | &nbsp &nbsp 
+    <%= link_to "Create New Event", new_event_path %>
+    &nbsp &nbsp | &nbsp &nbsp 
+    <%= link_to "Create New Location", new_location_path %>
+    &nbsp &nbsp | &nbsp &nbsp 
+    <%= link_to "Update Profile", edit_user_path(user) %>
+</p>
+<hr>
+
+

@@ -3,6 +3,9 @@
 <% else %>
     <h3><%= event.name %></h3>
 <% end %>
+
+<%= render "users/user_info", user: event.host %>
+
 <p>Date: <%= event.date %></p>
 <p>Time: <%= event.time %></p>
 
@@ -13,6 +16,7 @@
     &nbsp &nbsp | &nbsp &nbsp 
     <%= link_to "Delete", event, method: :delete, data: { confirm: "Are you sure?" } %>
 </p>
+
 <% if action_name == "index" %>
     <hr>
 <% end %>

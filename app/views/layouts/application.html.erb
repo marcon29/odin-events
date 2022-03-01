@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render "layouts/main_nav", user: current_user %>
     <%= yield %>
   </body>
 </html>

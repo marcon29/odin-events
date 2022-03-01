@@ -1,10 +1,1 @@
-<h1>Users#show</h1>
-<p>
-    <%= link_to "Back to All Events", events_path %> 
-    &nbsp &nbsp | &nbsp &nbsp 
-    <%= link_to "Back to All Locations", locations_path %> 
-    &nbsp &nbsp | &nbsp &nbsp 
-    <%= link_to "Create New User", new_user_path %> 
-</p>
-<hr>
 <%= render "user_info", user: @user %>
