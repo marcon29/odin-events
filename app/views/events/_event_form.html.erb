@@ -34,7 +34,7 @@
 
         <div class="form-field-group">
             <%= f.label :location, "Location" %>
-            <%= f.collection_select :location, @locations, :id, :name %>
+            <%= f.collection_select :location_id, @locations, :id, :name %>
         </div>
         <%= (tag.p emsg[:location].first, class: "small-text red-text") if emsg && emsg[:location] %>
 
