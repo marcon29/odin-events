@@ -1,0 +1,8 @@
+<h1>Events#show</h1>
+<p>
+    <%= link_to "See All Events", events_path %> 
+    &nbsp &nbsp | &nbsp &nbsp 
+    <%= link_to "Create New Event", new_event_path %> 
+</p>
+<hr>
+<%= render "event_info", event: @event %>
