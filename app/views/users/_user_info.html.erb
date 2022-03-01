@@ -1,0 +1,21 @@
+<% if controller_name == "events" %>
+    <p>Host: <%= link_to user.name, user_path(user) %></p>
+<% else %>
+    <h3><%= user.name %></h3>
+<% end %>
+
+<% if action_name == "show" %>
+    <p>Name: <%= user.name %></p>
+    <p>Username: <%= user.username %></p>
+    <p>Email: <%= user.email %></p>
+    <% if controller_name == "users" %>
+        <p>
+            <%= link_to "Edit", edit_user_path(user) %> 
+            &nbsp &nbsp | &nbsp &nbsp 
+            <%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" } %>
+        </p>
+    <% end %>
+<% end %>
+
+
+
