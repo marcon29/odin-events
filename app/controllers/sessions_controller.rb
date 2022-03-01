@@ -2,15 +2,6 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username], email: params[:email])
 
-    # if user.try(:authenticate, params[:password])
-    #   log_user_in(user)
-    # else
-    #   user.errors.add(:password, "You must enter a correct email.")
-    #   render "static/home"
-    # end
-
-    
-
     if @user.try(:authenticate, params[:password])
       log_user_in(@user)
     elsif @user

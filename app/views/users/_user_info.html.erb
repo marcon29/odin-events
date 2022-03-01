@@ -8,14 +8,26 @@
     <p>Name: <%= user.name %></p>
     <p>Username: <%= user.username %></p>
     <p>Email: <%= user.email %></p>
-    <p>Attended Events: 
-        <% user.attended_events.each do |ae| %>
-            <%= link_to ae.name, event_path(ae) %>
-            <% if ae != user.attended_events.last %>
-                &nbsp &nbsp | &nbsp &nbsp
+    <% if user.hosted_events.present? %>
+        <p>Hosted Events: 
+            <% user.hosted_events.each do |he| %>
+                <%= link_to he.name, event_path(he) %>
+                <% if he != user.hosted_events.last %>
+                    &nbsp &nbsp | &nbsp &nbsp
+                <% end %>
             <% end %>
-        <% end %>
-    </p>
+        </p>
+    <% end %>
+    <% if user.attended_events.present? %>
+        <p>Attended Events: 
+            <% user.attended_events.each do |ae| %>
+                <%= link_to ae.name, event_path(ae) %>
+                <% if ae != user.attended_events.last %>
+                    &nbsp &nbsp | &nbsp &nbsp
+                <% end %>
+            <% end %>
+        </p>
+    <% end %>
     <% if controller_name == "users" %>
         <p>
             <%= link_to "Edit", edit_user_path(user) %> 
