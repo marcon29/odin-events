@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :events_guests, foreign_key: :guest_id
     has_many :attended_events, through: :events_guests
 
-    # has_secure_password
+    has_secure_password
 
 
     def name

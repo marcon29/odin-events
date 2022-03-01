@@ -1,15 +1,25 @@
-<h1><%= "#{controller_name.titleize}##{action_name}" %></h1>
-<p>
-    <%= link_to "All Events", events_path %>
-    &nbsp &nbsp | &nbsp &nbsp 
-    <%= link_to "All Locations", locations_path %>
-    &nbsp &nbsp | &nbsp &nbsp 
-    <%= link_to "Create New Event", new_event_path %>
-    &nbsp &nbsp | &nbsp &nbsp 
-    <%= link_to "Create New Location", new_location_path %>
-    &nbsp &nbsp | &nbsp &nbsp 
-    <%= link_to "Update Profile", edit_user_path(user) %>
-</p>
-<hr>
+<% if logged_in? %>
+    <h1><%= "#{controller_name.titleize}##{action_name}" %></h1>
+<% elsif controller_name == "users" && action_name == "new" %>
+    <h1>Sign Up</h1>
+<% else %>    
+    <h1>Sign In</h1>
+<% end %>
+<% if logged_in? %>
+    <p>
+        <%= link_to "All Events", events_path %>
+        &nbsp &nbsp | &nbsp &nbsp 
+        <%= link_to "All Locations", locations_path %>
+        &nbsp &nbsp | &nbsp &nbsp 
+        <%= link_to "Create New Event", new_event_path %>
+        &nbsp &nbsp | &nbsp &nbsp 
+        <%= link_to "Create New Location", new_location_path %>
+        &nbsp &nbsp | &nbsp &nbsp 
+        <%= link_to "Update Profile", edit_user_path(user) %>
+        &nbsp &nbsp | &nbsp &nbsp 
+        <%= link_to "Log Out", logout_path, method: :delete %>
+    </p>
+    <hr>
+<% end %>
 
 

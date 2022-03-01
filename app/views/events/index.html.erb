@@ -1,7 +1,11 @@
-<% if @events.empty? %>
-    <h3><%= link_to "Add an Event", new_event_path %></h3>
-<% else %>
-    <% @events.each do |event| %>
-        <%= render "event_info", event: event %>
+<% if logged_in? %>
+    <% if @events.empty? %>
+        <h3><%= link_to "Add an Event", new_event_path %></h3>
+    <% else %>
+        <% @events.each do |event| %>
+            <%= render "event_info", event: event %>
+        <% end %>
     <% end %>
+<% else %>
+    <%= render "sessions/login_form", user: @user %>
 <% end %>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -11,20 +13,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      # log_user_in(@user)    # turn this on and the redirect off after setting up sessions
-      redirect_to user_path(@user)
+      log_user_in(@user)
     else
       render :new
     end
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    
     @user.assign_attributes(user_params)
     if @user.save
       redirect_to user_path(@user)
@@ -34,14 +32,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
     user.destroy
-    redirect_to root
+    redirect_to root_path
   end
 
 
   private
   def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :username, :email, :password_digest)
+    params.require(:user).permit(:id, :first_name, :last_name, :username, :email, :password)
+  end
+
+  def set_user
+    @user = current_user
   end
 end
