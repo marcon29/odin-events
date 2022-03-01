@@ -2,7 +2,12 @@
     <% if @events.empty? %>
         <h3><%= link_to "Add an Event", new_event_path %></h3>
     <% else %>
-        <% @events.each do |event| %>
+        <h2>Upcoming Events</h2>
+        <% @events.where("date >= ?", Date.today).each do |event| %>
+            <%= render "event_info", event: event %>
+        <% end %>
+        <h2>Past Events</h2>
+        <% @events.where("date < ?", Date.today).each do |event| %>
             <%= render "event_info", event: event %>
         <% end %>
     <% end %>

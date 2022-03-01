@@ -19,8 +19,16 @@
         </p>
     <% end %>
     <% if user.attended_events.present? %>
-        <p>Attended Events: 
-            <% user.attended_events.each do |ae| %>
+        <p>Upcoming Events: 
+            <% user.attended_events.where("date >= ?", Date.today).each do |ae| %>
+                <%= link_to ae.name, event_path(ae) %>
+                <% if ae != user.attended_events.last %>
+                    &nbsp &nbsp | &nbsp &nbsp
+                <% end %>
+            <% end %>
+        </p>
+        <p>Past Events: 
+            <% user.attended_events.where("date < ?", Date.today).each do |ae| %>
                 <%= link_to ae.name, event_path(ae) %>
                 <% if ae != user.attended_events.last %>
                     &nbsp &nbsp | &nbsp &nbsp
