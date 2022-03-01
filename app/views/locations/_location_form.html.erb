@@ -1,0 +1,60 @@
+<p>
+    <%= link_to "Back to All Locations", locations_path %> 
+    <% if action_name == "edit" %>
+        &nbsp &nbsp | &nbsp &nbsp 
+        <%= link_to "Back to #{@location.name}", location_path(@location) %> 
+    <% end %>
+</p>
+<hr>
+
+<% if @location.errors.any? %>
+    <% emsg = {} %>
+    <% @location.errors.messages.each do |attr, msg| %>
+        <% emsg[attr] = msg if attr %>
+    <% end %>
+<% end %>
+
+<section>
+    <%= form_for @location do |f| %>
+        <div class="form-field-group">
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name %>
+        </div>
+        <%= (tag.p emsg[:name].first, class: "small-text red-text") if emsg && emsg[:name] %>
+
+        <div class="form-field-group">
+            <%= f.label :address, "Address" %>
+            <%= f.text_field :address %>
+        </div>
+        <%= (tag.p emsg[:address].first, class: "small-text red-text") if emsg && emsg[:address] %>
+
+        <div class="form-field-group">
+            <%= f.label :city, "City" %>
+            <%= f.text_field :city %>
+        </div>
+        <%= (tag.p emsg[:city].first, class: "small-text red-text") if emsg && emsg[:city] %>
+
+        <div class="form-field-group">
+            <%= f.label :state, "State" %>
+            <%= f.text_field :state %>
+        </div>
+        <%= (tag.p emsg[:state].first, class: "small-text red-text") if emsg && emsg[:state] %>
+
+        <div class="form-field-group">
+            <%= f.label :zip, "Zip" %>
+            <%= f.text_field :zip %>
+        </div>
+        <%= (tag.p emsg[:zip].first, class: "small-text red-text") if emsg && emsg[:zip] %>
+
+        <%= f.submit %>
+    <% end %>
+</section>
+
+<% if action_name == "edit" %>
+    <p><%= link_to "Delete", @location, method: :delete, data: { confirm: "Are you sure?" } %></p>
+<% end %>
+
+
+
+
+

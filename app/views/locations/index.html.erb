@@ -1,0 +1,11 @@
+<h1>Locations#index</h1>
+<p><%= link_to "Create New Location", new_location_path %></p>
+<hr>
+
+<% if @locations.empty? %>
+    <h3><%= link_to "Add an Location", new_location_path %></h3>
+<% else %>
+    <% @locations.each do |location| %>
+        <%= render "location_info", location: location %>
+    <% end %>
+<% end %>
