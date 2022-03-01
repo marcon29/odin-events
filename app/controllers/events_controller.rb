@@ -9,10 +9,14 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @locations = Location.all
   end
 
   def create
     @event = Event.new(event_params)
+
+    # to re-render form
+    @locations = Location.all
 
     if @event.save
       redirect_to events_path
@@ -23,11 +27,14 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @locations = Location.all
   end
 
   def update
     @event = Event.find(params[:id])
     
+    # to re-render form
+    @locations = Location.all
     
     @event.assign_attributes(event_params)
     if @event.save
@@ -46,7 +53,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:id, :name, :date, :time)
+    params.require(:event).permit(:id, :name, :date, :time, :location_id)
   end
 
 end

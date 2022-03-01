@@ -5,6 +5,9 @@
 <% end %>
 <p>Date: <%= event.date %></p>
 <p>Time: <%= event.time %></p>
+
+<%= render "locations/location_info", location: event.location %>
+
 <p>
     <%= link_to "Edit", edit_event_path(event) %> 
     &nbsp &nbsp | &nbsp &nbsp 

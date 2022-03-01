@@ -34,6 +34,12 @@
         </div>
         <%= (tag.p emsg[:time].first, class: "small-text red-text") if emsg && emsg[:time] %>
 
+        <div class="form-field-group">
+            <%= f.label :location, "Location" %>
+            <%= f.collection_select :location, @locations, :id, :name %>
+        </div>
+        <%= (tag.p emsg[:location].first, class: "small-text red-text") if emsg && emsg[:location] %>
+
         <%= f.submit %>
     <% end %>
 </section>
