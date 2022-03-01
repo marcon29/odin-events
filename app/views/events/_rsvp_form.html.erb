@@ -1,0 +1,13 @@
+<% if event.guests.include?(@user) %>
+    <% events_guest = EventsGuest.find_by(guest_id: @user.id, attended_event_id: event.id) %>
+    <%= form_with model: events_guest do |f| %>
+        <%= button_to "Un-RSVP", events_guest_path(events_guest), method: :delete %>
+    <% end %>
+<% else %>
+    <% events_guest = EventsGuest.new %>
+    <%= form_with model: events_guest do |f| %>
+        <%= f.hidden_field :attended_event_id, value: event.id  %>
+        <%= f.hidden_field :guest_id, value: @user.id  %>
+        <%= f.submit "RSVP" %>
+    <% end %>
+<% end %>
