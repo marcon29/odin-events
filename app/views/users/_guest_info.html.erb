@@ -1,0 +1,9 @@
+<p>Guests: 
+    <% guests.each do |g| %>
+        <%= link_to g.name, user_path(g) %>
+        <% if g != guests.last %>
+            &nbsp &nbsp | &nbsp &nbsp
+        <% end %>
+    <% end %>
+</p>
+
